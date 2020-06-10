@@ -8,7 +8,7 @@ const {
     updateSearch,
     getSearchesById,
     deleteSearch
-} = require('../controllers/searches')
+} = require('../controller/searches')
 
 const Search = require('../models/Search');
 
