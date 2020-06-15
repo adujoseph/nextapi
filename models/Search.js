@@ -1,19 +1,44 @@
 const mongoose = require('mongoose');
 
-
 const SearchSchema = new mongoose.Schema({
-
     address: {
         type: String,
         required: [true, 'Use must add an address field']
     },
-
     createdAt: {
         type: Date,
         default: Date.now()
-    }
-
+    },
+    //     user: {
+    //     type: String,
+    //     ref: 'User',
+    //     required: true
+    // }
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true
+    // }
 });
+
+module.exports = mongoose.model('Search', SearchSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Create bootcamp slug from the name
@@ -57,4 +82,21 @@ const SearchSchema = new mongoose.Schema({
 // });
 
 
-module.exports = mongoose.model('Search', SearchSchema);
+
+
+
+// username: {
+//     type: String,
+//     required: [true, 'Use must add an address field'],
+//     search: {
+//         type: String,
+//         createdAt: {
+//             type: Date,
+//             default: Date.now()
+//         }
+//     },
+//     createdAt: {
+//         type: Date,
+//         default: Date.now()
+//     }
+// }

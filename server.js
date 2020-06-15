@@ -6,6 +6,10 @@ const colors = require('colors');
 
 const connectDB = require('./config/db');
 
+//graphQL Imports
+const graphqlHttp = require('express-graphql')
+const graphqlSchema = require('./graphql/schema')
+const graphqlResolver = require('./graphql/resolver')
 
 dotenv.config({path: './config/config.env'});
 
@@ -14,7 +18,8 @@ connectDB();
 
 // routes files
 const searches  = require('./routes/searches');
-
+const user  = require('./routes/users');
+const { GraphQLSchema } = require('graphql');
 // initialize app
 const app = express();
 
@@ -25,12 +30,20 @@ app.use(express.json());
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
+//graphql
+app.use('/graphql', graphqlHttp({
+    schema: graphqlSchema,
+    rootValue: graphqlResolver,
+    graphiql: true
+
+}))
 
 // Enable CORS
 app.use(cors());
 
 // Mount Routers
 app.use('/api/v1/searches', searches);
+app.use('/api/v1/user', user);
 // app.use(error)
 
 
