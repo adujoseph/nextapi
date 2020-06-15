@@ -8,8 +8,8 @@ const connectDB = require('./config/db');
 
 //graphQL Imports
 const graphqlHttp = require('express-graphql')
-const graphqlSchema = require('./graphql/schema')
-const graphqlResolver = require('./graphql/resolver')
+const graphqlSchema = require('./graphql/schema_')
+const graphqlResolver = require('./graphql/resolver_')
 
 dotenv.config({path: './config/config.env'});
 
@@ -19,7 +19,7 @@ connectDB();
 // routes files
 const searches  = require('./routes/searches');
 const user  = require('./routes/users');
-const { GraphQLSchema } = require('graphql');
+// const { GraphQLSchema } = require('graphql');
 // initialize app
 const app = express();
 

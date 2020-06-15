@@ -4,16 +4,32 @@ const Search = require('../models/Search');
 const { query } = require('express');
 
 module.exports = buildSchema(`
+    type searches {
+        id:ID!
+        address: String!
+    }
     type TestData {
-        text: String!
-        views: Int!
+        username: String!
+        searches: [searches!]!
     }
     type RootQuery {
-        hello: TestData
+        user: TestData
     }
 
     schema {
             query: RootQuery
         }
 `)
+// {query{ user { searches}} }
 
+
+// username: {
+//     type: String,
+//     required: [true, 'Please add a username']
+// },
+// searches: [
+//     {
+//         type: mongoose.Schema.Types.ObjectId, 
+//         ref: 'Search'
+//     }
+// ],
